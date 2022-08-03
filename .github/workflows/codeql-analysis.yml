@@ -1,0 +1,35 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '45 23 * * 1'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript' ]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@edoardo/trap-caching
+      with:
+        languages: ${{ matrix.language }}
+        tools: https://github.com/dsp-testing/codeql-experimental-releases/releases/download/codeql-bundle-20220803/codeql-bundle-linux64.tar.gz
+        trap-caching: true
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@edoardo/trap-caching
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@edoardo/trap-caching
