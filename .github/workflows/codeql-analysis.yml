@@ -13,7 +13,7 @@ jobs:
     name: Analyze
     runs-on: ubuntu-latest
     permissions:
-      actions: write
+      actions: read
       contents: read
       security-events: write
     strategy:
@@ -27,9 +27,9 @@ jobs:
       uses: github/codeql-action/init@edoardo/trap-caching
       with:
         languages: ${{ matrix.language }}
-        tools: https://github.com/dsp-testing/codeql-experimental-releases/releases/download/codeql-bundle-20220803/codeql-bundle-linux64.tar.gz
+        tools: https://github.com/dsp-testing/codeql-experimental-releases/releases/download/codeql-bundle-20220804/codeql-bundle-linux64.tar.gz
         trap-caching: true
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@edoardo/trap-caching
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@edoardo/trap-caching
+      with:
+        skip-queries: true
