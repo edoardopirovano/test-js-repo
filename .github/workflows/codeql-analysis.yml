@@ -24,12 +24,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@edoardo/trap-caching
+      uses: github/codeql-action/init@edoardo/add-trap-cache-option
       with:
         languages: ${{ matrix.language }}
-        tools: https://github.com/dsp-testing/codeql-experimental-releases/releases/download/codeql-bundle-20220804/codeql-bundle-linux64.tar.gz
         trap-caching: true
+        asouifhja9o: faihufiasuh
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@edoardo/trap-caching
+      uses: github/codeql-action/analyze@edoardo/add-trap-cache-option
       with:
         skip-queries: true
