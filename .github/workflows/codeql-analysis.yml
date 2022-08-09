@@ -23,4 +23,5 @@ jobs:
       uses: edoardopirovano/cache@add-skip-upload
       with:
         path: .
-        key: hello
+        key: helloa
+        skip-upload: true
