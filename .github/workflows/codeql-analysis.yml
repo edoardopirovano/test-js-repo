@@ -16,20 +16,11 @@ jobs:
       actions: read
       contents: read
       security-events: write
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'javascript' ]
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@edoardo/trap-caching
+    - name: Cache Primes
+      uses: edoardopirovano/cache@add-skip-upload
       with:
-        languages: ${{ matrix.language }}
-        tools: https://github.com/dsp-testing/codeql-experimental-releases/releases/download/codeql-bundle-20220804/codeql-bundle-linux64.tar.gz
-        trap-caching: true
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@edoardo/trap-caching
-      with:
-        skip-queries: true
+        path: .
+        key: hello
