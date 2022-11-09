@@ -24,10 +24,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@edoardo/test-timeout
+      uses: github/codeql-action/init@edoardo/test-timeout-2
       with:
         languages: ${{ matrix.language }}
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@edoardo/test-timeout
+      uses: github/codeql-action/analyze@edoardo/test-timeout-2
       with:
         skip-queries: true
